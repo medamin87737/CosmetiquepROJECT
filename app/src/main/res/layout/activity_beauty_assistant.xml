@@ -6,64 +6,79 @@
     android:background="@color/rose_pale"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <!-- Header : fond sous status bar, contenu décalé sous heure / wifi / batterie -->
+    <LinearLayout
+        android:id="@+id/headerAssistantRoot"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_gradient_blue"
-        android:minHeight="@dimen/toolbar_height"
-        app:navigationIconTint="@color/blanc"
-        app:title="">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <View
+            android:id="@+id/statusBarSpacer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/spacing_md">
+            android:layout_height="0dp"
+            android:background="@android:color/transparent" />
 
-            <FrameLayout
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/bg_logo_circle_white">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/beauty_assistant_title"
-                    android:src="@drawable/ic_beauty_assistant_mark" />
-            </FrameLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header_content_height"
+            android:background="@android:color/transparent"
+            android:minHeight="@dimen/header_content_height"
+            app:navigationIconTint="@color/blanc"
+            app:title="">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_sm"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/spacing_md">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="@string/beauty_assistant_title"
-                    android:textColor="@color/blanc"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_logo_circle_white">
 
-                <TextView
-                    android:id="@+id/txtAssistantHint"
-                    android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/beauty_assistant_title"
+                        android:src="@drawable/ic_beauty_assistant_mark" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/poppins"
-                    android:maxLines="1"
-                    android:text="@string/beauty_assistant_hint"
-                    android:textColor="@color/rose_poudre"
-                    android:textSize="11sp" />
+                    android:layout_marginStart="@dimen/spacing_sm"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/beauty_assistant_title"
+                        android:textColor="@color/blanc"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtAssistantHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins"
+                        android:maxLines="1"
+                        android:text="@string/beauty_assistant_hint"
+                        android:textColor="@color/rose_poudre"
+                        android:textSize="11sp" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChat"

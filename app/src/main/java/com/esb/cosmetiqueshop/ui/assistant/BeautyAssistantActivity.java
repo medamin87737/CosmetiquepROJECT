@@ -16,6 +16,7 @@ import com.esb.cosmetiqueshop.data.repository.BeautyAiRepository;
 import com.esb.cosmetiqueshop.databinding.ActivityBeautyAssistantBinding;
 import com.esb.cosmetiqueshop.model.BeautyChatMessage;
 import com.esb.cosmetiqueshop.utils.DateUtils;
+import com.esb.cosmetiqueshop.utils.StatusBarHelper;
 import com.esb.cosmetiqueshop.utils.ToolbarBackHelper;
 
 /**
@@ -37,6 +38,7 @@ public class BeautyAssistantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityBeautyAssistantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        StatusBarHelper.applyHeader(this, binding.headerAssistantRoot);
         ToolbarBackHelper.enableFinish(binding.toolbar, this);
 
         repository = new BeautyAiRepository(this);
