@@ -110,7 +110,18 @@
         <item name="cornerSize">12dp</item>
     </style>
 
+    <style name="Widget.Shop.StarButton" parent="@android:style/Widget.Material.ImageButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:src">@drawable/ic_star_outline</item>
+        <item name="android:contentDescription">@string/rating_hint</item>
+    </style>
+
     <style name="Widget.Shop.Toolbar" parent="Widget.Material3.Toolbar">
+
         <item name="android:background">@drawable/bg_gradient_header</item>
         <item name="titleTextColor">@color/blanc</item>
         <item name="titleTextAppearance">@style/TextAppearance.Shop.ToolbarTitle</item>

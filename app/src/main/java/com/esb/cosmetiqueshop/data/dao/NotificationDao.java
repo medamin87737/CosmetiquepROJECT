@@ -69,6 +69,15 @@ public class NotificationDao {
         return rows > 0;
     }
 
+    public int markAllRead(long userId) {
+        ContentValues v = new ContentValues();
+        v.put(DbContract.Notifications.COL_IS_READ, 1);
+        return dbHelper.getWritableDatabase().update(DbContract.Notifications.TABLE, v,
+                DbContract.Notifications.COL_USER_ID + "=? AND "
+                        + DbContract.Notifications.COL_IS_READ + "=0",
+                new String[]{String.valueOf(userId)});
+    }
+
     private NotificationItem map(Cursor c) {
         NotificationItem n = new NotificationItem();
         n.setId(c.getLong(c.getColumnIndexOrThrow(DbContract.Notifications.COL_ID)));

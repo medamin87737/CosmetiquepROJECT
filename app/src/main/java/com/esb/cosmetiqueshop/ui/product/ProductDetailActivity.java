@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RatingBar;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +17,11 @@ import com.esb.cosmetiqueshop.R;
 import com.esb.cosmetiqueshop.adapter.ReviewAdapter;
 import com.esb.cosmetiqueshop.data.repository.CartRepository;
 import com.esb.cosmetiqueshop.data.repository.CatalogRepository;
+import com.esb.cosmetiqueshop.data.repository.NotificationRepository;
 import com.esb.cosmetiqueshop.data.repository.ProductRepository;
 import com.esb.cosmetiqueshop.databinding.ActivityProductDetailNewBinding;
+import com.esb.cosmetiqueshop.databinding.DialogReviewBinding;
 import com.esb.cosmetiqueshop.model.Product;
-import com.esb.cosmetiqueshop.model.Review;
 import com.esb.cosmetiqueshop.ui.auth.LoginActivity;
 import com.esb.cosmetiqueshop.ui.notifications.NotificationsActivity;
 import com.esb.cosmetiqueshop.utils.GuestAuthHelper;
@@ -28,6 +30,7 @@ import com.esb.cosmetiqueshop.utils.ProDialog;
 import com.esb.cosmetiqueshop.utils.SessionManager;
 import com.esb.cosmetiqueshop.utils.StatusBarHelper;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
@@ -40,6 +43,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private long productId;
     private int qty = 1;
+    private ReviewAdapter reviewAdapter;
+    private static final int MAX_REVIEW_STARS = 6;
 
     public static Intent intent(Context context, long productId) {
         Intent i = new Intent(context, ProductDetailActivity.class);
@@ -97,11 +102,12 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         if (sessionManager.isLoggedIn()) {
             binding.headerPro.btnHeaderLogin.setVisibility(View.GONE);
-            binding.headerPro.btnHeaderNotifications.setVisibility(View.VISIBLE);
+            binding.headerPro.layoutHeaderNotifications.setVisibility(View.VISIBLE);
             binding.headerPro.btnHeaderNotifications.setOnClickListener(v ->
                     startActivity(new Intent(this, NotificationsActivity.class)));
+            loadNotifBadge();
         } else {
-            binding.headerPro.btnHeaderNotifications.setVisibility(View.GONE);
+            binding.headerPro.layoutHeaderNotifications.setVisibility(View.GONE);
             binding.headerPro.btnHeaderLogin.setVisibility(View.VISIBLE);
             binding.headerPro.btnHeaderLogin.setOnClickListener(v ->
                     startActivity(new Intent(this, LoginActivity.class)));
@@ -143,38 +149,54 @@ public class ProductDetailActivity extends AppCompatActivity {
         catalogRepository.getReviews(productId, this::showReviews);
     }
 
-    private void showReviews(java.util.List<Review> reviews) {
-        binding.recyclerReviews.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerReviews.setAdapter(new ReviewAdapter(reviews));
+    private void showReviews(java.util.List<com.esb.cosmetiqueshop.model.Review> reviews) {
+        if (reviewAdapter == null) {
+            reviewAdapter = new ReviewAdapter(reviews);
+            binding.recyclerReviews.setLayoutManager(new LinearLayoutManager(this));
+            binding.recyclerReviews.setAdapter(reviewAdapter);
+        } else {
+            reviewAdapter.submit(reviews);
+        }
     }
 
     private void openReviewDialog() {
         if (!GuestAuthHelper.requireLogin(sessionManager, this)) {
             return;
         }
-        RatingBar ratingBar = new RatingBar(this);
-        ratingBar.setNumStars(5);
-        ratingBar.setStepSize(1f);
-        EditText comment = new EditText(this);
-        comment.setHint(R.string.comment_hint);
-        android.widget.LinearLayout layout = new android.widget.LinearLayout(this);
-        layout.setOrientation(android.widget.LinearLayout.VERTICAL);
-        layout.setPadding(48, 16, 48, 0);
-        layout.addView(ratingBar);
-        layout.addView(comment);
-        new MaterialAlertDialogBuilder(this)
+        DialogReviewBinding dialogBinding = DialogReviewBinding.inflate(LayoutInflater.from(this));
+        final int[] selected = {0};
+        ImageButton[] stars = {
+                dialogBinding.star1, dialogBinding.star2, dialogBinding.star3,
+                dialogBinding.star4, dialogBinding.star5, dialogBinding.star6
+        };
+        for (int i = 0; i < stars.length; i++) {
+            final int value = i + 1;
+            stars[i].setOnClickListener(v -> {
+                selected[0] = value;
+                paintStars(stars, value, dialogBinding.txtRatingValue);
+            });
+        }
+        paintStars(stars, 0, dialogBinding.txtRatingValue);
+
+        androidx.appcompat.app.AlertDialog dialog = new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.btn_submit_review)
-                .setView(layout)
-                .setPositiveButton(R.string.btn_send, (d, w) -> {
-                    int rating = Math.round(ratingBar.getRating());
-                    if (rating < 1) {
-                        rating = 1;
+                .setView(dialogBinding.getRoot())
+                .setPositiveButton(R.string.btn_send, null)
+                .setNegativeButton(android.R.string.cancel, null)
+                .create();
+        dialog.setOnShowListener(d -> dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+                .setOnClickListener(v -> {
+                    if (selected[0] < 1 || selected[0] > MAX_REVIEW_STARS) {
+                        ProDialog.error(this, R.string.error_rating_required);
+                        return;
                     }
-                    String body = comment.getText() != null ? comment.getText().toString() : "";
-                    catalogRepository.submitReview(sessionManager.getUserId(), productId, rating, body,
+                    TextInputEditText comment = dialogBinding.edtReviewComment;
+                    String body = comment.getText() != null ? comment.getText().toString().trim() : "";
+                    catalogRepository.submitReview(sessionManager.getUserId(), productId, selected[0], body,
                             new CatalogRepository.ReviewSubmitCallback() {
                                 @Override
                                 public void onSuccess() {
+                                    dialog.dismiss();
                                     Toast.makeText(ProductDetailActivity.this, R.string.review_added,
                                             Toast.LENGTH_SHORT).show();
                                     loadReviews();
@@ -185,8 +207,45 @@ public class ProductDetailActivity extends AppCompatActivity {
                                     ProDialog.error(ProductDetailActivity.this, message);
                                 }
                             });
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+                }));
+        dialog.show();
+    }
+
+    private void paintStars(ImageButton[] stars, int selected, TextView label) {
+        for (int i = 0; i < stars.length; i++) {
+            stars[i].setImageResource(i < selected
+                    ? R.drawable.ic_star_filled
+                    : R.drawable.ic_star_outline);
+        }
+        if (selected <= 0) {
+            label.setText(R.string.rating_hint);
+        } else {
+            label.setText(getString(R.string.rating_selected, selected));
+        }
+    }
+
+    private void loadNotifBadge() {
+        long userId = sessionManager.getUserId();
+        if (userId <= 0 || binding.headerPro.txtNotifBadge == null) {
+            return;
+        }
+        new NotificationRepository(this).unreadCount(userId, count -> {
+            if (count <= 0) {
+                binding.headerPro.txtNotifBadge.setVisibility(View.GONE);
+                binding.headerPro.txtNotifBadge.setText("");
+            } else {
+                binding.headerPro.txtNotifBadge.setVisibility(View.VISIBLE);
+                binding.headerPro.txtNotifBadge.setText(count > 99 ? "99+" : String.valueOf(count));
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sessionManager.isLoggedIn()) {
+            loadNotifBadge();
+        }
     }
 }
+

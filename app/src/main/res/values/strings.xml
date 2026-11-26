@@ -267,7 +267,11 @@
     <string name="drawer_open">Ouvrir le menu</string>
     <string name="drawer_close">Fermer le menu</string>
 
-    <string name="brand_hint">Marque</string>
+    <string name="brand_hint">Marque (saisie libre)</string>
+    <string name="admin_put_on_promo">Mettre en promotion</string>
+    <string name="promo_helper">Prix promo en DT (doit être inférieur au prix normal)</string>
+    <string name="error_promo_price">Le prix promo doit être &gt; 0 et &lt; au prix normal.</string>
+    <string name="admin_product_on_promo"> · PROMO</string>
     <string name="skin_type_label">Type de peau</string>
     <string name="skin_all">Tous types</string>
     <string name="skin_dry">Peau sèche</string>
@@ -295,7 +299,9 @@
     <string name="product_image_local_hint">Image locale / galerie (recommandé)</string>
     <string name="admin_order_manage">Gestion commande</string>
     <string name="select_status">Statut de la commande</string>
-    <string name="rating_hint">Note (1-5)</string>
+    <string name="rating_hint">Notez de 1 à 6 étoiles</string>
+    <string name="rating_selected">Note : %1$d / 6</string>
+    <string name="error_rating_required">Choisissez une note (1 à 6 étoiles).</string>
     <string name="comment_hint">Commentaire</string>
     <string name="btn_submit_review">Publier l\'avis</string>
     <string name="category_name_hint">Nom catégorie</string>

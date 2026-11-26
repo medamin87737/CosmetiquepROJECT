@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_md">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="@string/rating_hint"
+        android:textColor="@color/texte_secondaire"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:id="@+id/layoutStars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/star1"
+            style="@style/Widget.Shop.StarButton" />
+
+        <ImageButton
+            android:id="@+id/star2"
+            style="@style/Widget.Shop.StarButton" />
+
+        <ImageButton
+            android:id="@+id/star3"
+            style="@style/Widget.Shop.StarButton" />
+
+        <ImageButton
+            android:id="@+id/star4"
+            style="@style/Widget.Shop.StarButton" />
+
+        <ImageButton
+            android:id="@+id/star5"
+            style="@style/Widget.Shop.StarButton" />
+
+        <ImageButton
+            android:id="@+id/star6"
+            style="@style/Widget.Shop.StarButton" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtRatingValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:textColor="@color/bordeaux_fonce"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Shop.TextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:hint="@string/comment_hint"
+        app:boxBackgroundMode="outline">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtReviewComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>

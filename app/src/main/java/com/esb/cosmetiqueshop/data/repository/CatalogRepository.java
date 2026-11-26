@@ -185,6 +185,10 @@ public class CatalogRepository {
                 postReviewFailure(callback, "Vous avez déjà noté ce produit.");
                 return;
             }
+            if (rating < 1 || rating > 6) {
+                postReviewFailure(callback, "Note invalide (1 à 6 étoiles).");
+                return;
+            }
             Long orderId = orderDao.findDeliveredOrderIdForProduct(userId, productId);
             if (orderId == null) {
                 postReviewFailure(callback, "Avis après livraison uniquement.");
@@ -196,6 +200,7 @@ public class CatalogRepository {
             review.setOrderId(orderId);
             review.setRating(rating);
             review.setComment(comment);
+            review.setCreatedAt(com.esb.cosmetiqueshop.utils.DateUtils.now());
             long id = reviewDao.insert(review);
             if (id > 0) {
                 executors.mainThread().execute(callback::onSuccess);

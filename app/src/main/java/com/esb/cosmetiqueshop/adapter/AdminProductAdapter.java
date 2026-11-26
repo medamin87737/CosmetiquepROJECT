@@ -53,6 +53,9 @@ public class AdminProductAdapter extends RecyclerView.Adapter<AdminProductAdapte
         String cat = p.getCategoryName() != null ? p.getCategoryName() : "";
         String meta = holder.itemView.getContext().getString(
                 R.string.admin_product_meta, cat, p.getStock());
+        if (p.getPromoPriceMillimes() > 0) {
+            meta += holder.itemView.getContext().getString(R.string.admin_product_on_promo);
+        }
         if (!p.isActive()) {
             meta += holder.itemView.getContext().getString(R.string.admin_product_hidden);
         }

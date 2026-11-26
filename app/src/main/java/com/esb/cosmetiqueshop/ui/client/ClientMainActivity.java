@@ -77,7 +77,7 @@ public class ClientMainActivity extends AppCompatActivity {
 
     private void setupHeader() {
         header.btnHeaderLogin.setVisibility(android.view.View.GONE);
-        header.btnHeaderNotifications.setVisibility(android.view.View.VISIBLE);
+        header.layoutHeaderNotifications.setVisibility(android.view.View.VISIBLE);
         header.btnHeaderNotifications.setOnClickListener(v ->
                 startActivity(new Intent(this, NotificationsActivity.class)));
     }
@@ -144,14 +144,21 @@ public class ClientMainActivity extends AppCompatActivity {
             }
         });
         NotificationRepository notificationRepository = new NotificationRepository(this);
-        notificationRepository.unreadCount(userId, count -> {
-            if (count > 0) {
-                header.txtHeaderSubtitle.setText(
-                        getString(R.string.nav_notifications) + " · " + count);
-            } else {
-                header.txtHeaderSubtitle.setText(R.string.header_tagline);
-            }
-        });
+        notificationRepository.unreadCount(userId, this::updateNotifBadge);
+    }
+
+    /** Affiche le nombre de notifications non lues sur la cloche. */
+    private void updateNotifBadge(int count) {
+        if (header.txtNotifBadge == null) {
+            return;
+        }
+        if (count <= 0) {
+            header.txtNotifBadge.setVisibility(android.view.View.GONE);
+            header.txtNotifBadge.setText("");
+            return;
+        }
+        header.txtNotifBadge.setVisibility(android.view.View.VISIBLE);
+        header.txtNotifBadge.setText(count > 99 ? "99+" : String.valueOf(count));
     }
 
     @Override

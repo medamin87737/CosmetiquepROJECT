@@ -51,7 +51,7 @@ public class PublicHomeActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         header.btnHeaderLogin.setVisibility(View.VISIBLE);
-        header.btnHeaderNotifications.setVisibility(View.GONE);
+        header.layoutHeaderNotifications.setVisibility(View.GONE);
         header.btnHeaderLogin.setOnClickListener(v -> openAccountOrLogin());
 
         homeBinding.recyclerCategories.setLayoutManager(

@@ -20,6 +20,8 @@
 
     <!-- Champagne premium -->
     <color name="champagne">#C6A36A</color>
+    <color name="star_yellow">#F5C518</color>
+    <color name="star_empty">#E0D0D6</color>
     <color name="champagne_clair">#E5C99C</color>
     <color name="champagne_fonce">#B78359</color>
 

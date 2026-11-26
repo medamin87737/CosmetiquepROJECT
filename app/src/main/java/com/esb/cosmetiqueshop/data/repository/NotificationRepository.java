@@ -66,6 +66,15 @@ public class NotificationRepository {
         });
     }
 
+    public void markAllRead(long userId, Runnable onDone) {
+        executors.diskIO().execute(() -> {
+            notificationDao.markAllRead(userId);
+            if (onDone != null) {
+                executors.mainThread().execute(onDone);
+            }
+        });
+    }
+
     public void push(NotificationItem item, LongCallback callback) {
         executors.diskIO().execute(() -> {
             long id = notificationDao.insert(item);
