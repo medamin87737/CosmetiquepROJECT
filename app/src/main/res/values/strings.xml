@@ -152,6 +152,8 @@
     <string name="beauty_assistant_welcome">Bonjour ! Décrivez votre besoin (peau sèche, anti-âge, SPF, maquillage…) et je vous conseille parmi nos produits.</string>
     <string name="beauty_assistant_input_hint">Ex. : peau mixte, crème hydratante…</string>
     <string name="beauty_assistant_open">Assistante beauté IA</string>
+    <string name="beauty_assistant_label">Assistante</string>
+    <string name="beauty_assistant_typing">Réflexion…</string>
     <string name="btn_logout">Déconnexion</string>
     <string name="btn_edit_profile">Enregistrer les modifications</string>
     <string name="btn_change_password">Changer le mot de passe</string>

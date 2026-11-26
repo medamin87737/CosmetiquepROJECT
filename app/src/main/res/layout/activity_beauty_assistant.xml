@@ -9,21 +9,61 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/toolbar_height"
         android:background="@drawable/bg_gradient_blue"
-        android:title="@string/beauty_assistant_title"
-        android:titleTextColor="@color/blanc" />
+        android:minHeight="@dimen/toolbar_height"
+        app:navigationIconTint="@color/blanc"
+        app:title="">
 
-    <TextView
-        android:id="@+id/txtAssistantHint"
-        style="@style/TextAppearance.Shop.Caption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/rose_bebe"
-        android:paddingHorizontal="@dimen/spacing_md"
-        android:paddingVertical="@dimen/spacing_sm"
-        android:text="@string/beauty_assistant_hint"
-        android:textColor="@color/texte_secondaire" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/spacing_md">
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_logo_circle_white">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/beauty_assistant_title"
+                    android:src="@drawable/ic_beauty_assistant_mark" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_sm"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/beauty_assistant_title"
+                    android:textColor="@color/blanc"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAssistantHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:maxLines="1"
+                    android:text="@string/beauty_assistant_hint"
+                    android:textColor="@color/rose_poudre"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerChat"
@@ -32,6 +72,17 @@
         android:layout_weight="1"
         android:clipToPadding="false"
         android:paddingVertical="@dimen/spacing_sm" />
+
+    <TextView
+        android:id="@+id/txtTypingStatus"
+        style="@style/TextAppearance.Shop.Caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_xs"
+        android:text="@string/beauty_assistant_typing"
+        android:textColor="@color/bordeaux"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"

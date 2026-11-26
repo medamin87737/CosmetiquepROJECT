@@ -28,9 +28,19 @@ public class BeautyChatAdapter extends RecyclerView.Adapter<BeautyChatAdapter.Ho
         notifyItemInserted(items.size() - 1);
     }
 
-    public void clear() {
-        items.clear();
-        notifyDataSetChanged();
+    /** Met à jour le texte du dernier message (effet lettre par lettre). */
+    public void updateLastText(String text) {
+        if (items.isEmpty()) {
+            return;
+        }
+        int idx = items.size() - 1;
+        BeautyChatMessage old = items.get(idx);
+        items.set(idx, new BeautyChatMessage(old.isFromUser(), text, old.getCreatedAt()));
+        notifyItemChanged(idx);
+    }
+
+    public int getLastIndex() {
+        return items.size() - 1;
     }
 
     @NonNull
@@ -50,11 +60,15 @@ public class BeautyChatAdapter extends RecyclerView.Adapter<BeautyChatAdapter.Ho
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) holder.layoutBubble.getLayoutParams();
         if (m.isFromUser()) {
             lp.gravity = Gravity.END;
+            holder.layoutAiAvatar.setVisibility(View.GONE);
+            holder.txtLabel.setVisibility(View.GONE);
             holder.layoutBubble.setBackgroundResource(R.drawable.bg_bubble_mine);
             holder.txtBubble.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.blanc));
             holder.txtTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.rose_poudre));
         } else {
             lp.gravity = Gravity.START;
+            holder.layoutAiAvatar.setVisibility(View.VISIBLE);
+            holder.txtLabel.setVisibility(View.VISIBLE);
             holder.layoutBubble.setBackgroundResource(R.drawable.bg_bubble_other);
             holder.txtBubble.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.texte));
             holder.txtTime.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.texte_secondaire));
@@ -68,13 +82,17 @@ public class BeautyChatAdapter extends RecyclerView.Adapter<BeautyChatAdapter.Ho
     }
 
     static class Holder extends RecyclerView.ViewHolder {
+        final View layoutAiAvatar;
         final LinearLayout layoutBubble;
+        final TextView txtLabel;
         final TextView txtBubble;
         final TextView txtTime;
 
         Holder(@NonNull View itemView) {
             super(itemView);
+            layoutAiAvatar = itemView.findViewById(R.id.layoutAiAvatar);
             layoutBubble = itemView.findViewById(R.id.layoutBubble);
+            txtLabel = itemView.findViewById(R.id.txtBubbleLabel);
             txtBubble = itemView.findViewById(R.id.txtBubble);
             txtTime = itemView.findViewById(R.id.txtBubbleTime);
         }

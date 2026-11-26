@@ -20,8 +20,8 @@ import java.nio.charset.StandardCharsets;
 public final class BeautyAiClient {
 
     private static final String ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
-    /** Modèle gratuit Groq (rapide). */
-    private static final String MODEL = "llama-3.1-8b-instant";
+    /** Modèle gratuit Groq actuel (llama-3.1 déprécié). Docs : console.groq.com/docs/models */
+    private static final String MODEL = "openai/gpt-oss-20b";
 
     private BeautyAiClient() {
     }

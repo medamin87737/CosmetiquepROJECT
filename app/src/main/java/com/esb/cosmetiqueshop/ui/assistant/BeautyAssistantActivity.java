@@ -1,6 +1,8 @@
 package com.esb.cosmetiqueshop.ui.assistant;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -17,13 +19,17 @@ import com.esb.cosmetiqueshop.utils.DateUtils;
 import com.esb.cosmetiqueshop.utils.ToolbarBackHelper;
 
 /**
- * Chat assistant beauté : conseille uniquement les produits du catalogue.
+ * Chat assistant beauté : réponses Groq affichées lettre par lettre.
  */
 public class BeautyAssistantActivity extends AppCompatActivity {
+
+    private static final long TYPE_DELAY_MS = 18L;
 
     private ActivityBeautyAssistantBinding binding;
     private BeautyAiRepository repository;
     private BeautyChatAdapter adapter;
+    private final Handler typeHandler = new Handler(Looper.getMainLooper());
+    private Runnable typeRunnable;
     private boolean busy;
 
     @Override
@@ -42,9 +48,8 @@ public class BeautyAssistantActivity extends AppCompatActivity {
             binding.txtAssistantHint.setText(R.string.beauty_assistant_hint_no_key);
         }
 
-        // Message d’accueil
-        adapter.add(new BeautyChatMessage(false,
-                getString(R.string.beauty_assistant_welcome), DateUtils.now()));
+        // Accueil avec effet typewriter
+        revealLetterByLetter(getString(R.string.beauty_assistant_welcome), false);
 
         binding.btnSend.setOnClickListener(v -> sendQuestion());
     }
@@ -63,22 +68,64 @@ public class BeautyAssistantActivity extends AppCompatActivity {
         adapter.add(new BeautyChatMessage(true, q, DateUtils.now()));
         scrollToEnd();
         setBusy(true);
+        binding.txtTypingStatus.setVisibility(View.VISIBLE);
 
         repository.ask(q, new BeautyAiRepository.AdviceCallback() {
             @Override
             public void onSuccess(String advice) {
-                setBusy(false);
-                adapter.add(new BeautyChatMessage(false, advice, DateUtils.now()));
-                scrollToEnd();
+                binding.txtTypingStatus.setVisibility(View.GONE);
+                revealLetterByLetter(advice, true);
             }
 
             @Override
             public void onFailure(String message) {
-                setBusy(false);
-                adapter.add(new BeautyChatMessage(false, message, DateUtils.now()));
-                scrollToEnd();
+                binding.txtTypingStatus.setVisibility(View.GONE);
+                revealLetterByLetter(message, true);
             }
         });
+    }
+
+    /** Affiche la réponse IA caractère par caractère. */
+    private void revealLetterByLetter(String fullText, boolean unlockWhenDone) {
+        cancelTyping();
+        if (fullText == null) {
+            fullText = "";
+        }
+        final String text = fullText;
+        adapter.add(new BeautyChatMessage(false, "", DateUtils.now()));
+        scrollToEnd();
+        setBusy(true);
+
+        typeRunnable = new Runnable() {
+            private int index = 0;
+
+            @Override
+            public void run() {
+                if (isFinishing() || binding == null) {
+                    return;
+                }
+                if (index <= text.length()) {
+                    adapter.updateLastText(text.substring(0, index));
+                    scrollToEnd();
+                    index++;
+                    if (index <= text.length()) {
+                        typeHandler.postDelayed(this, TYPE_DELAY_MS);
+                    } else if (unlockWhenDone) {
+                        setBusy(false);
+                    } else {
+                        setBusy(false);
+                    }
+                }
+            }
+        };
+        typeHandler.post(typeRunnable);
+    }
+
+    private void cancelTyping() {
+        if (typeRunnable != null) {
+            typeHandler.removeCallbacks(typeRunnable);
+            typeRunnable = null;
+        }
     }
 
     private void setBusy(boolean value) {
@@ -94,5 +141,11 @@ public class BeautyAssistantActivity extends AppCompatActivity {
                 binding.recyclerChat.smoothScrollToPosition(n - 1);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        cancelTyping();
+        super.onDestroy();
     }
 }
