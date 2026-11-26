@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_admin_dashboard"
+            android:icon="@drawable/ic_admin_dashboard"
+            android:title="@string/admin_dashboard" />
+        <item
+            android:id="@+id/nav_admin_products"
+            android:icon="@drawable/ic_admin_products"
+            android:title="@string/admin_products" />
+        <item
+            android:id="@+id/nav_admin_categories"
+            android:icon="@drawable/ic_admin_categories"
+            android:title="@string/admin_categories" />
+        <item
+            android:id="@+id/nav_admin_orders"
+            android:icon="@drawable/ic_admin_orders"
+            android:title="@string/admin_orders" />
+        <item
+            android:id="@+id/nav_admin_deliveries"
+            android:icon="@drawable/ic_admin_deliveries"
+            android:title="@string/admin_deliveries" />
+        <item
+            android:id="@+id/nav_admin_clients"
+            android:icon="@drawable/ic_admin_users"
+            android:title="@string/admin_users" />
+        <item
+            android:id="@+id/nav_admin_messages"
+            android:icon="@drawable/ic_admin_messages"
+            android:title="@string/admin_messages" />
+        <item
+            android:id="@+id/nav_admin_revenue"
+            android:icon="@drawable/ic_admin_revenue"
+            android:title="@string/admin_revenue" />
+    </group>
+    <item
+        android:id="@+id/nav_admin_logout"
+        android:icon="@drawable/ic_admin_logout"
+        android:title="@string/admin_logout" />
+</menu>

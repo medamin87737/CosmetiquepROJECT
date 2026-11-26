@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/spacing_md">
+
+    <TextView
+        android:id="@+id/txtCarouselTitle"
+        style="@style/TextAppearance.Shop.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_md"
+        android:ellipsize="end"
+        android:fontFamily="@font/playfair"
+        android:maxLines="1"
+        android:textColor="@color/bordeaux_fonce"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCarousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:minHeight="@dimen/product_card_height"
+            android:overScrollMode="never"
+            android:paddingHorizontal="@dimen/spacing_xl" />
+
+        <ImageButton
+            android:id="@+id/btnCarouselPrev"
+            android:layout_width="@dimen/carousel_arrow"
+            android:layout_height="@dimen/carousel_arrow"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="@dimen/spacing_xs"
+            android:background="@drawable/bg_arrow_circle"
+            android:contentDescription="@string/btn_previous"
+            android:elevation="4dp"
+            android:padding="@dimen/spacing_sm"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow_left_black"
+            android:tint="@color/bordeaux" />
+
+        <ImageButton
+            android:id="@+id/btnCarouselNext"
+            android:layout_width="@dimen/carousel_arrow"
+            android:layout_height="@dimen/carousel_arrow"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:background="@drawable/bg_arrow_circle"
+            android:contentDescription="@string/btn_next"
+            android:elevation="4dp"
+            android:padding="@dimen/spacing_sm"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow_right_black"
+            android:tint="@color/bordeaux" />
+    </FrameLayout>
+</LinearLayout>

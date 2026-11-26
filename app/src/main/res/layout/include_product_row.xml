@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/spacing_md">
+
+    <TextView
+        android:id="@+id/txtRowTitle"
+        style="@style/TextAppearance.Shop.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_md"
+        android:textStyle="bold" />
+
+    <!-- Flèches en overlay : plus de produits à moitié sur les côtés -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:clipChildren="true"
+        android:clipToPadding="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:minHeight="@dimen/product_card_height"
+            android:overScrollMode="never" />
+
+        <ImageButton
+            android:id="@+id/btnRowPrev"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="@dimen/spacing_xs"
+            android:background="@drawable/bg_arrow_circle"
+            android:contentDescription="@string/btn_previous"
+            android:elevation="4dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_left_black" />
+
+        <ImageButton
+            android:id="@+id/btnRowNext"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:background="@drawable/bg_arrow_circle"
+            android:contentDescription="@string/btn_next"
+            android:elevation="4dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_arrow_right_black" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Shop.Title" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/bordeaux_fonce</item>
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="TextAppearance.Shop.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/texte</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="TextAppearance.Shop.Caption" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/texte_secondaire</item>
+        <item name="android:textSize">@dimen/text_caption</item>
+    </style>
+
+    <style name="TextAppearance.Shop.ToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/blanc</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.Shop.Button.Primary" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/button_min_height</item>
+        <item name="cornerRadius">@dimen/corner_button</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/bg_btn_primary</item>
+        <item name="android:textColor">@color/blanc</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+        <item name="rippleColor">@color/ripple_light</item>
+    </style>
+
+    <style name="Widget.Shop.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/button_min_height</item>
+        <item name="cornerRadius">@dimen/corner_button</item>
+        <item name="strokeColor">@color/bordeaux</item>
+        <item name="android:textColor">@color/bordeaux</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.Shop.Button.Nav" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">40dp</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="backgroundTint">@color/blanc</item>
+        <item name="strokeColor">@color/gris_bordure</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textColor">@color/bordeaux</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="iconTint">@color/bordeaux</item>
+    </style>
+
+    <!-- Champs texte arrondis (plus de rectangle anguleux) -->
+    <style name="Widget.Shop.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/corner_card</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_card</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_card</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_card</item>
+        <item name="boxStrokeColor">@color/shop_text_input_stroke</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/bordeaux</item>
+        <item name="android:textColorHint">@color/texte_secondaire</item>
+        <item name="boxBackgroundColor">@color/blanc</item>
+    </style>
+
+    <!-- Recherche : forme capsule pro + icône loupe -->
+    <style name="Widget.Shop.TextInput.Search" parent="Widget.Shop.TextInput">
+        <item name="boxCornerRadiusTopStart">@dimen/corner_button</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_button</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_button</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_button</item>
+        <item name="startIconDrawable">@drawable/ic_search</item>
+        <item name="startIconTint">@color/bordeaux</item>
+        <item name="boxStrokeColor">@color/shop_search_stroke</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="endIconTint">@color/texte_secondaire</item>
+    </style>
+
+    <style name="Widget.Shop.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/corner_card</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardBackgroundColor">@color/blanc</item>
+        <item name="strokeColor">@color/gris_bordure</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+
+    <style name="ShapeAppearance.Shop.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.Shop.Rounded12" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="Widget.Shop.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@drawable/bg_gradient_header</item>
+        <item name="titleTextColor">@color/blanc</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Shop.ToolbarTitle</item>
+        <item name="navigationIconTint">@color/blanc</item>
+        <item name="subtitleTextColor">@color/blanc</item>
+        <item name="android:theme">@style/ThemeOverlay.Shop.Toolbar</item>
+        <item name="popupTheme">@style/ThemeOverlay.Shop.ToolbarPopup</item>
+    </style>
+
+    <style name="ThemeOverlay.Shop.Toolbar" parent="ThemeOverlay.Material3.Dark.ActionBar">
+        <item name="colorControlNormal">@color/blanc</item>
+        <item name="android:textColorPrimary">@color/blanc</item>
+        <item name="android:textColorSecondary">@color/blanc</item>
+    </style>
+
+    <style name="ThemeOverlay.Shop.ToolbarPopup" parent="ThemeOverlay.Material3.Light">
+        <item name="android:textColorPrimary">@color/texte</item>
+        <item name="colorControlNormal">@color/bordeaux</item>
+    </style>
+</resources>

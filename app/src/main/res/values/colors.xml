@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Luxury Beauty — Rose & Champagne (identité Cosmétique Shop) -->
+
+    <!-- Fonds -->
+    <color name="blanc">#FFFFFF</color>
+    <color name="ivoire">#FFFBF8</color>
+    <color name="rose_tres_clair">#FFF3F6</color>
+    <color name="rose_pale">#FFFBF8</color>
+    <color name="rose_bebe">#FFF3F6</color>
+    <color name="rose_poudre">#F4DCE6</color>
+
+    <!-- Primaires / dégradés -->
+    <color name="bordeaux_fonce">#842344</color>
+    <color name="bordeaux">#922B50</color>
+    <color name="rose_premium">#D66B91</color>
+    <color name="rose_degrade_end">#C94F7C</color>
+    <color name="rouge">#B52B55</color>
+    <color name="promo">#C52F55</color>
+
+    <!-- Champagne premium -->
+    <color name="champagne">#C6A36A</color>
+    <color name="champagne_clair">#E5C99C</color>
+    <color name="champagne_fonce">#B78359</color>
+
+    <!-- Textes -->
+    <color name="texte">#382832</color>
+    <color name="texte_secondaire">#887780</color>
+    <!-- Alias titres : ancien "bleu" → bordeaux élégant (layouts existants) -->
+    <color name="bleu">#842344</color>
+    <color name="bleu_fonce">#922B50</color>
+    <color name="bleu_pale">#F4DCE6</color>
+
+    <!-- UI -->
+    <color name="gris_bordure">#F0D5E0</color>
+    <color name="succes">#1E7A4C</color>
+    <color name="jaune_etoile">#C6A36A</color>
+    <color name="overlay_bordeaux">#B3842344</color>
+    <color name="ripple_light">#33FFFFFF</color>
+    <color name="ombre_carte">#1A842344</color>
+    <color name="accent_soft">#F8DCE7</color>
+</resources>

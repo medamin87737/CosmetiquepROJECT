@@ -1,0 +1,1 @@
+# CosmetiqueShop proguard rules

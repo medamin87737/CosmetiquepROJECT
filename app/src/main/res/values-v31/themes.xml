@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CosmetiqueShop.Splash" parent="Theme.CosmetiqueShop">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:statusBarColor">@color/ivoire</item>
+        <item name="android:windowSplashScreenBackground">@color/ivoire</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/ivoire</item>
+    </style>
+</resources>

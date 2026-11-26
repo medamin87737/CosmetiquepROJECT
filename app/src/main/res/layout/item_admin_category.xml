@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Shop.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_sm"
+    android:layout_marginHorizontal="@dimen/spacing_xs"
+    app:cardBackgroundColor="@color/blanc"
+    app:strokeColor="@color/gris_bordure"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_sm">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgAdminCategory"
+            android:layout_width="@dimen/admin_row_image"
+            android:layout_height="@dimen/admin_row_image"
+            android:contentDescription="@string/section_categories"
+            android:scaleType="centerCrop"
+            android:src="@drawable/product_placeholder"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Shop.Circle"
+            app:strokeColor="@color/bordeaux"
+            app:strokeWidth="1.5dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAdminCategoryName"
+                style="@style/TextAppearance.Shop.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/texte"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtAdminCategoryDesc"
+                style="@style/TextAppearance.Shop.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/texte_secondaire" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

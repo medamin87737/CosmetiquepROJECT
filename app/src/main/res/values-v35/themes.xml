@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CosmetiqueShop" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/bordeaux</item>
+        <item name="colorPrimaryDark">@color/bordeaux_fonce</item>
+        <item name="colorOnPrimary">@color/blanc</item>
+        <item name="colorSecondary">@color/rose_premium</item>
+        <item name="colorOnSecondary">@color/blanc</item>
+        <item name="colorSurface">@color/ivoire</item>
+        <item name="colorOnSurface">@color/texte</item>
+        <item name="colorSurfaceVariant">@color/rose_tres_clair</item>
+        <item name="android:statusBarColor">@color/bordeaux_fonce</item>
+        <item name="android:navigationBarColor">@color/ivoire</item>
+        <item name="android:windowBackground">@color/ivoire</item>
+        <item name="android:textColorPrimary">@color/texte</item>
+        <item name="android:textColorSecondary">@color/texte_secondaire</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="materialButtonStyle">@style/Widget.Shop.Button.Primary</item>
+        <item name="toolbarStyle">@style/Widget.Shop.Toolbar</item>
+        <item name="textInputStyle">@style/Widget.Shop.TextInput</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

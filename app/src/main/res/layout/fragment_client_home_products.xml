@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Accueil client authentifié : carrousels produits (promos, best, nouveautés). -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rose_bebe"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/spacing_xl">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:fontFamily="@font/poppins"
+            android:text="@string/home_cta_subtitle"
+            android:textColor="@color/texte_secondaire"
+            android:textSize="@dimen/text_subtitle" />
+
+        <include
+            android:id="@+id/carouselPromos"
+            layout="@layout/include_product_carousel" />
+
+        <include
+            android:id="@+id/carouselBest"
+            layout="@layout/include_product_carousel" />
+
+        <include
+            android:id="@+id/carouselNew"
+            layout="@layout/include_product_carousel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOpenShop"
+            style="@style/Widget.Shop.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/btn_see_all_products" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

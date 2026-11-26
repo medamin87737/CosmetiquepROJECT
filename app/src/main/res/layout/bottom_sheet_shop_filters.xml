@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blanc"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_lg">
+
+    <TextView
+        style="@style/TextAppearance.Shop.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfair"
+        android:text="@string/filter_title"
+        android:textColor="@color/bordeaux_fonce" />
+
+    <TextView
+        style="@style/TextAppearance.Shop.Caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:text="@string/filter_category"
+        android:textColor="@color/texte_secondaire" />
+
+    <Spinner
+        android:id="@+id/spinnerFilterCategory"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:background="@drawable/bg_input_rounded"
+        android:paddingHorizontal="@dimen/spacing_sm" />
+
+    <TextView
+        style="@style/TextAppearance.Shop.Caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:text="@string/sort_label"
+        android:textColor="@color/texte_secondaire" />
+
+    <Spinner
+        android:id="@+id/spinnerFilterSort"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:background="@drawable/bg_input_rounded"
+        android:paddingHorizontal="@dimen/spacing_sm" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchFilterPromo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:fontFamily="@font/poppins"
+        android:text="@string/filter_promo"
+        android:textColor="@color/texte" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchFilterStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:fontFamily="@font/poppins"
+        android:text="@string/filter_in_stock"
+        android:textColor="@color/texte" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilterReset"
+            style="@style/Widget.Shop.Button.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:layout_weight="1"
+            android:text="@string/btn_reset_filters" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilterApply"
+            style="@style/Widget.Shop.Button.Primary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_apply_filters" />
+    </LinearLayout>
+</LinearLayout>

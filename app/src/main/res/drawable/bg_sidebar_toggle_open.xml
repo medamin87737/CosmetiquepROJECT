@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Coins arrondis côté contenu quand la sidebar est ouverte -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/bordeaux" />
+    <corners
+        android:bottomRightRadius="14dp"
+        android:topRightRadius="14dp" />
+</shape>

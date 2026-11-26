@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cosmétique Shop</string>
+
+    <!-- Splash / Auth -->
+    <string name="splash_tagline">Beauté &amp; soins, made in Tunisia</string>
+    <string name="login_title">Connexion</string>
+    <string name="login_subtitle">Accédez à votre espace beauté</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="btn_login">Se connecter</string>
+    <string name="btn_register">Créer un compte</string>
+    <string name="link_register">Pas de compte ? Inscrivez-vous</string>
+    <string name="link_login">Déjà inscrit ? Connexion</string>
+    <string name="register_title">Inscription client</string>
+    <string name="full_name_hint">Nom complet</string>
+    <string name="phone_hint">Téléphone (+216…)</string>
+    <string name="change_password_title">Changement de mot de passe</string>
+    <string name="change_password_subtitle">Pour votre sécurité, définissez un nouveau mot de passe.</string>
+    <string name="new_password_hint">Nouveau mot de passe</string>
+    <string name="confirm_password_hint">Confirmer le mot de passe</string>
+    <string name="btn_save_password">Enregistrer</string>
+    <string name="error_password_mismatch">Les mots de passe ne correspondent pas.</string>
+    <string name="error_invalid_login">Email ou mot de passe incorrect.</string>
+    <string name="dialog_error_title">Connexion</string>
+    <string name="dialog_success_title">Succès</string>
+    <string name="error_invalid_credentials">Identifiants invalides. Vérifiez votre email et mot de passe.</string>
+
+    <!-- Guest -->
+    <string name="guest_dialog_title">Connexion requise</string>
+    <string name="guest_dialog_message">Connectez-vous ou créez un compte pour utiliser cette fonctionnalité.</string>
+    <string name="btn_guest_login">Se connecter</string>
+    <string name="btn_guest_register">Créer un compte</string>
+    <string name="btn_continue_guest">Continuer en visiteur</string>
+    <string name="btn_explore_as_guest">Découvrir sans compte</string>
+
+    <!-- Nav client -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_shop">Boutique</string>
+    <string name="nav_cart">Panier</string>
+    <string name="nav_orders">Commandes</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_notifications">Notifications</string>
+
+    <!-- Public / Home (vitrine : vidéo, infos, contact — produits dans Boutique) -->
+    <string name="home_intro">Bienvenue chez Cosmétique Shop : vidéos, conseils et engagement qualité. Consultez tous les produits dans la Boutique.</string>
+    <string name="btn_see_all_products">Découvrir nos produits</string>
+    <string name="home_cta_subtitle">Votre beauté, notre passion</string>
+    <string name="promo_badge_short">PROMO</string>
+    <string name="section_categories">Catégories</string>
+    <string name="section_promos">Promotions</string>
+    <string name="section_best">Meilleures ventes</string>
+    <string name="section_new">Nouveautés</string>
+    <string name="section_engagements">Nos engagements</string>
+    <string name="engagement_quality">Produits authentiques</string>
+    <string name="engagement_quality_desc">Sélection premium, traçabilité et soins testés pour une beauté de confiance.</string>
+    <string name="engagement_delivery">Livraison rapide</string>
+    <string name="engagement_delivery_desc">Expédition soignée en Tunisie, suivi clair et délais respectés.</string>
+    <string name="engagement_support">Conseils experts</string>
+    <string name="engagement_support_desc">Notre équipe vous guide pour choisir les rituels adaptés à votre peau.</string>
+    <string name="engagement_badge_video">Vidéo</string>
+    <string name="btn_play_video">Lire la vidéo</string>
+    <string name="footer_contact">Contactez-nous</string>
+
+    <!-- Shop -->
+    <string name="shop_title">Boutique</string>
+    <string name="search_hint">Rechercher un produit…</string>
+    <string name="header_tagline">Beauté &amp; soins premium</string>
+    <string name="filter_title">Filtres</string>
+    <string name="filter_category">Catégorie</string>
+    <string name="filter_promo">En promotion</string>
+    <string name="filter_in_stock">En stock</string>
+    <string name="sort_label">Tri</string>
+    <string name="sort_name_asc">Nom A-Z</string>
+    <string name="sort_price_asc">Prix croissant</string>
+    <string name="sort_price_desc">Prix décroissant</string>
+    <string name="btn_reset_filters">Réinitialiser</string>
+    <string name="btn_apply_filters">Appliquer</string>
+
+    <!-- Product -->
+    <string name="product_detail">Détail produit</string>
+    <string name="add_to_cart">Ajouter au panier</string>
+    <string name="added_to_cart">Ajouté au panier</string>
+    <string name="error_add_cart">Stock insuffisant</string>
+    <string name="favorite">Favori</string>
+    <string name="stock_label">Stock : %1$d</string>
+    <string name="out_of_stock">Rupture de stock</string>
+    <string name="ingredients_label">Ingrédients</string>
+    <string name="tips_label">Conseils d\'utilisation</string>
+    <string name="reviews_label">Avis clients</string>
+    <string name="similar_label">Produits similaires</string>
+    <string name="qty_label">Quantité</string>
+    <string name="price_format">%1$s</string>
+
+    <!-- Cart -->
+    <string name="cart_title">Panier</string>
+    <string name="empty_cart">Votre panier est vide</string>
+    <string name="subtotal_label">Sous-total</string>
+    <string name="delivery_label">Livraison</string>
+    <string name="total_label">Total</string>
+    <string name="btn_checkout">Passer commande</string>
+    <string name="cart_item_removed">Article retiré</string>
+    <string name="cart_undo">Annuler</string>
+    <string name="delivery_free_hint">Livraison offerte dès %1$s</string>
+
+    <!-- Checkout -->
+    <string name="checkout_title">Commande</string>
+    <string name="checkout_step_address">Adresse</string>
+    <string name="checkout_step_delivery">Livraison</string>
+    <string name="checkout_step_confirm">Confirmation</string>
+    <string name="address_hint">Adresse de livraison</string>
+    <string name="delivery_standard">Standard</string>
+    <string name="delivery_express">Express</string>
+    <string name="payment_cod">Paiement à la livraison (COD)</string>
+    <string name="btn_confirm_order">Confirmer la commande</string>
+    <string name="checkout_ok">Commande enregistrée avec succès</string>
+    <string name="checkout_recap">Récapitulatif</string>
+
+    <!-- Orders -->
+    <string name="orders_title">Mes commandes</string>
+    <string name="order_number">Commande #%1$d</string>
+    <string name="order_status">Statut : %1$s</string>
+    <string name="btn_cancel_order">Annuler</string>
+    <string name="btn_reorder">Commander à nouveau</string>
+    <string name="btn_pdf_receipt">Reçu PDF</string>
+    <string name="order_detail_title">Détail commande</string>
+    <string name="timeline_title">Suivi</string>
+    <string name="order_items_title">Articles</string>
+    <string name="order_item_qty">Quantité : %1$d</string>
+    <string name="order_item_unit_price">Prix unitaire : %1$s</string>
+    <string name="order_articles_count">%1$d article(s)</string>
+    <string name="btn_update_status">Mettre à jour le statut</string>
+    <string name="status_updated">Statut mis à jour</string>
+    <string name="status_unchanged">Ce statut est déjà appliqué</string>
+
+    <!-- Order statuses -->
+    <string name="status_en_attente">En attente</string>
+    <string name="status_confirmee">Confirmée</string>
+    <string name="status_en_preparation">En préparation</string>
+    <string name="status_en_livraison">En livraison</string>
+    <string name="status_livree">Livrée</string>
+    <string name="status_annulee">Annulée</string>
+    <string name="status_echec">Échec livraison</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Mon profil</string>
+    <string name="favorites_title">Mes favoris</string>
+    <string name="messages_title">Messages</string>
+    <string name="beauty_assistant_title">Assistante beauté</string>
+    <string name="beauty_assistant_hint">Conseils IA via Groq — uniquement les produits Cosmétique Shop.</string>
+    <string name="beauty_assistant_hint_no_key">Ajoutez GROQ_API_KEY dans local.properties (console.groq.com/keys) puis rebuild.</string>
+    <string name="beauty_assistant_welcome">Bonjour ! Décrivez votre besoin (peau sèche, anti-âge, SPF, maquillage…) et je vous conseille parmi nos produits.</string>
+    <string name="beauty_assistant_input_hint">Ex. : peau mixte, crème hydratante…</string>
+    <string name="beauty_assistant_open">Assistante beauté IA</string>
+    <string name="btn_logout">Déconnexion</string>
+    <string name="btn_edit_profile">Enregistrer les modifications</string>
+    <string name="btn_change_password">Changer le mot de passe</string>
+
+    <!-- Notifications -->
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_empty">Aucune notification</string>
+    <string name="notification_channel_name">Boutique</string>
+    <string name="notification_channel_desc">Commandes et messages</string>
+
+    <!-- Messages -->
+    <string name="message_hint">Votre message…</string>
+    <string name="btn_send">Envoyer</string>
+    <string name="btn_new_conversation">Nouveau message</string>
+    <string name="subject_hint">Sujet</string>
+    <string name="new_message_hint">Décrivez brièvement votre demande — notre équipe vous répondra.</string>
+
+    <!-- Admin nav -->
+    <string name="admin_area">Espace admin</string>
+    <string name="admin_dashboard">Tableau de bord</string>
+    <string name="admin_products">Produits</string>
+    <string name="admin_categories">Catégories</string>
+    <string name="admin_orders">Commandes</string>
+    <string name="admin_deliveries">Colis livrés</string>
+    <string name="delivered_packages_subtitle">Commandes livrées — détails client et adresse</string>
+    <string name="delivered_empty">Aucun colis livré pour le moment</string>
+    <string name="delivered_items_label">Articles</string>
+    <string name="delivered_address_label">Adresse</string>
+    <string name="delivered_phone_label">Téléphone</string>
+    <string name="delivered_client_label">Client</string>
+    <string name="delivered_date_label">Livré le</string>
+    <string name="admin_clients">Clients</string>
+    <string name="admin_users">Utilisateurs</string>
+    <string name="admin_messages">Messages</string>
+    <string name="admin_exports">Exports</string>
+    <string name="admin_revenue">Chiffre d\'affaires</string>
+    <string name="admin_revenue_total">CA livré (total)</string>
+    <string name="admin_revenue_orders">%1$d commandes livrées</string>
+    <string name="admin_revenue_export">Exporter les chiffres</string>
+    <string name="admin_chart_revenue_7d">CA — 7 derniers jours</string>
+    <string name="admin_chart_orders_status">Répartition des commandes</string>
+    <string name="admin_gauge_fulfillment">Livraison</string>
+    <string name="admin_gauge_stock">Santé stock</string>
+    <string name="admin_gauge_ticket">Panier moyen</string>
+    <string name="admin_user_edit">Utilisateur</string>
+    <string name="admin_user_role">Rôle</string>
+    <string name="admin_user_active">Compte actif</string>
+    <string name="admin_user_created">Utilisateur créé</string>
+    <string name="admin_user_updated">Utilisateur mis à jour</string>
+    <string name="role_client">Client</string>
+    <string name="role_delivery">Livreur</string>
+    <string name="role_admin">Admin</string>
+    <string name="admin_logout">Déconnexion</string>
+    <string name="stat_revenue">Chiffre d\'affaires</string>
+    <string name="stat_orders">Commandes</string>
+    <string name="stat_clients">Clients</string>
+    <string name="stat_low_stock">Stock bas</string>
+    <string name="btn_export_csv">Exporter CSV</string>
+    <string name="btn_export_pdf">Exporter PDF</string>
+    <string name="btn_add">Ajouter</string>
+    <string name="btn_previous">Précédent</string>
+    <string name="btn_next">Suivant</string>
+    <string name="page_info">Page %1$d / %2$d</string>
+    <string name="admin_empty_list">Aucun élément à afficher</string>
+    <string name="admin_product_meta">%1$s · Stock %2$d</string>
+    <string name="admin_product_hidden"> · masqué</string>
+    <string name="btn_edit">Modifier</string>
+    <string name="btn_hide">Masquer</string>
+    <string name="btn_activate">Activer</string>
+    <string name="btn_deactivate">Désactiver</string>
+    <string name="delivery_fees_title">Frais de livraison</string>
+    <string name="delivery_fees_subtitle">Tarifs appliqués au panier client</string>
+    <string name="delivery_standard_desc">Livraison classique sous 48–72 h en Tunisie</string>
+    <string name="delivery_express_desc">Livraison prioritaire, délai accéléré</string>
+    <string name="delivery_free_desc">Le frais standard est offert au-delà de ce montant</string>
+    <string name="agents_title">Livreurs</string>
+    <string name="agents_subtitle">Équipe de livraison disponible</string>
+    <string name="agent_available">Disponible</string>
+    <string name="agent_unavailable">Indisponible</string>
+    <string name="agent_vehicle_label">Véhicule</string>
+
+    <!-- States -->
+    <string name="state_loading">Chargement…</string>
+    <string name="state_error">Une erreur est survenue</string>
+    <string name="state_empty">Aucun élément</string>
+    <string name="state_empty_hint">Explorez la boutique pour découvrir nos soins</string>
+    <string name="orders_empty">Aucune commande pour le moment</string>
+    <string name="favorites_empty">Aucun favori enregistré</string>
+    <string name="messages_empty">Aucun message — démarrez une conversation</string>
+    <string name="conversation_unread">Nouveau · %1$d</string>
+    <string name="message_subject_label">Objet</string>
+    <string name="message_client_label">Client : %1$s</string>
+    <string name="message_no_preview">Aucun message pour le moment</string>
+    <string name="btn_retry">Réessayer</string>
+
+    <!-- Misc -->
+    <string name="logout">Déconnexion</string>
+    <string name="products_title">Produits</string>
+    <string name="dashboard_welcome">Bonjour, %1$s</string>
+    <string name="category_skincare">Soin</string>
+    <string name="category_makeup">Maquillage</string>
+    <string name="category_hair">Cheveux</string>
+    <string name="content_desc_product_image">Image produit</string>
+    <string name="content_desc_hero">Vidéo d\'accueil</string>
+    <string name="review_added">Avis publié</string>
+    <string name="review_not_allowed">Avis après livraison uniquement</string>
+    <string name="export_saved">Fichier prêt à enregistrer</string>
+    <string name="mark_treated">Marquer traité</string>
+    <string name="assign_delivery">Assigner livreur</string>
+    <string name="period_filter">Période</string>
+    <string name="drawer_open">Ouvrir le menu</string>
+    <string name="drawer_close">Fermer le menu</string>
+
+    <string name="brand_hint">Marque</string>
+    <string name="skin_type_label">Type de peau</string>
+    <string name="skin_all">Tous types</string>
+    <string name="skin_dry">Peau sèche</string>
+    <string name="skin_oily">Peau grasse</string>
+    <string name="skin_mixed">Peau mixte</string>
+    <string name="skin_sensitive">Peau sensible</string>
+    <string name="alert_threshold_hint">Seuil alerte stock</string>
+    <string name="price_dt_hint">Prix (DT)</string>
+    <string name="promo_dt_hint">Prix promo (DT, 0 = aucune)</string>
+    <string name="active_product">Produit actif</string>
+    <string name="admin_product_edit">Produit</string>
+    <string name="product_image_url_hint">URL image (HTTPS)</string>
+    <string name="btn_pick_gallery">Choisir depuis galerie</string>
+    <string name="admin_dashboard_welcome">Tableau de bord</string>
+    <string name="admin_dashboard_subtitle">Vue d\'ensemble boutique, ventes et stock</string>
+    <string name="admin_quick_stats">Indicateurs</string>
+    <string name="admin_quick_actions">Actions rapides (CRUD)</string>
+    <string name="password_optional_hint">Mot de passe (création ou reset)</string>
+    <string name="admin_manage_products">Gérer les produits</string>
+    <string name="admin_add_product">Ajouter un produit</string>
+    <string name="admin_manage_categories">Gérer les catégories</string>
+    <string name="admin_manage_orders">Gérer les commandes</string>
+    <string name="admin_manage_clients">Gérer les clients</string>
+    <string name="admin_manage_messages">Messages clients</string>
+    <string name="product_image_local_hint">Image locale / galerie (recommandé)</string>
+    <string name="admin_order_manage">Gestion commande</string>
+    <string name="select_status">Statut de la commande</string>
+    <string name="select_agent">Choisir un livreur</string>
+    <string name="rating_hint">Note (1-5)</string>
+    <string name="comment_hint">Commentaire</string>
+    <string name="btn_submit_review">Publier l\'avis</string>
+    <string name="category_name_hint">Nom catégorie</string>
+    <string name="category_desc_hint">Description</string>
+    <string name="category_image_hint">Image de la catégorie (galerie ou URL)</string>
+    <string name="content_desc_category_image">Image catégorie</string>
+    <string name="category_edit_title">Modifier la catégorie</string>
+    <string name="category_add_title">Nouvelle catégorie</string>
+    <string name="btn_delete">Supprimer</string>
+    <string name="btn_cancel">Annuler</string>
+    <string name="category_delete_confirm_title">Supprimer la catégorie ?</string>
+    <string name="category_delete_confirm_message">Les produits de « %1$s » seront déplacés vers une autre catégorie, puis la catégorie sera supprimée.</string>
+    <string name="category_deleted">Catégorie supprimée</string>
+    <string name="client_inactive">Compte désactivé</string>
+    <string name="filter_all_categories">Toutes</string>
+    <string name="product_name_hint">Nom du produit</string>
+    <string name="stock_hint">Quantité en stock</string>
+    <string name="btn_save">Enregistrer</string>
+</resources>

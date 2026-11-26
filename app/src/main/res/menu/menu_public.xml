@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_login"
+        android:title="@string/btn_login"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_register"
+        android:title="@string/btn_register"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_client_area"
+        android:title="@string/nav_profile"
+        app:showAsAction="never" />
+</menu>

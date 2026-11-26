@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rose_pale"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_md">
+
+        <TextView
+            style="@style/TextAppearance.Shop.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/playfair"
+            android:text="@string/nav_profile"
+            android:textColor="@color/bordeaux_fonce" />
+
+        <TextView
+            android:id="@+id/txtEmail"
+            style="@style/TextAppearance.Shop.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:textColor="@color/texte_secondaire" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Shop.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/full_name_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Shop.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_hint"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveProfile"
+            style="@style/Widget.Shop.Button.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/btn_edit_profile" />
+
+        <!-- Assistante beauté IA -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Shop.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_lg"
+            app:cardBackgroundColor="@color/blanc"
+            app:strokeColor="@color/gris_bordure"
+            app:strokeWidth="1dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBeautyAssistant"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center_vertical"
+                android:minHeight="56dp"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:text="@string/beauty_assistant_open"
+                android:textAllCaps="false"
+                android:textColor="@color/bordeaux_fonce"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_beauty_assistant"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/spacing_md"
+                app:iconSize="24dp"
+                app:iconTint="@color/bordeaux" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Messages : carte isolée + icône pro -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Shop.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            app:cardBackgroundColor="@color/blanc">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMessages"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center_vertical"
+                android:minHeight="56dp"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:text="@string/messages_title"
+                android:textAllCaps="false"
+                android:textColor="@color/bordeaux_fonce"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_message"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/spacing_md"
+                app:iconSize="24dp"
+                app:iconTint="@color/bordeaux" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangePassword"
+            style="@style/Widget.Shop.Button.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/btn_change_password"
+            app:icon="@drawable/ic_lock"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/spacing_sm"
+            app:iconTint="@color/bordeaux" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/btn_logout"
+            android:textColor="@color/rouge" />
+    </LinearLayout>
+</ScrollView>

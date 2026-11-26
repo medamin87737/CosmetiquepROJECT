@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rose_bebe"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_md">
+
+    <TextView
+        style="@style/TextAppearance.Shop.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfair"
+        android:text="@string/admin_deliveries"
+        android:textColor="@color/bordeaux_fonce" />
+
+    <TextView
+        style="@style/TextAppearance.Shop.Caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:layout_marginBottom="@dimen/spacing_sm"
+        android:text="@string/delivered_packages_subtitle"
+        android:textColor="@color/texte_secondaire" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDelivered"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false" />
+
+    <TextView
+        android:id="@+id/txtDeliveredEmpty"
+        style="@style/TextAppearance.Shop.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/spacing_xl"
+        android:text="@string/delivered_empty"
+        android:textColor="@color/texte_secondaire"
+        android:visibility="gone" />
+</LinearLayout>

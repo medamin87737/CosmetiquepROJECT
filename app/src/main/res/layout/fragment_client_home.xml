@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Accueil vitrine : vidéo, catégories (raccourcis), engagements, contact.
+     Le catalogue produits complet est dans l'onglet Boutique (compte). -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivoire"
+    android:clipChildren="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/spacing_xl">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hero_height">
+
+            <androidx.media3.ui.PlayerView
+                android:id="@+id/heroPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_desc_hero"
+                app:resize_mode="zoom"
+                app:surface_type="texture_view"
+                app:use_controller="false" />
+
+            <ImageView
+                android:id="@+id/heroPlaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/content_desc_hero"
+                android:scaleType="centerCrop"
+                android:src="@drawable/product_placeholder" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/txtHomeIntro"
+            style="@style/TextAppearance.Shop.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/home_intro"
+            android:textColor="@color/texte_secondaire" />
+
+
+        <TextView
+            style="@style/TextAppearance.Shop.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/section_categories"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:clipChildren="false">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCategories"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/category_row_height"
+                android:layout_marginHorizontal="40dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/spacing_xs"
+                android:paddingEnd="@dimen/spacing_xs" />
+
+            <!-- Centrées sur le cercle (72dp), pas sur le texte dessous -->
+            <ImageButton
+                android:id="@+id/btnCatPrev"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top|start"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_arrow_circle"
+                android:clickable="true"
+                android:contentDescription="@string/btn_previous"
+                android:elevation="8dp"
+                android:focusable="true"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_arrow_left_black" />
+
+            <ImageButton
+                android:id="@+id/btnCatNext"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_arrow_circle"
+                android:clickable="true"
+                android:contentDescription="@string/btn_next"
+                android:elevation="8dp"
+                android:focusable="true"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_arrow_right_black" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/btnOpenShop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:background="@drawable/bg_cta_discover"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingVertical="@dimen/spacing_lg">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="@string/btn_see_all_products"
+                android:textColor="@color/blanc"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:fontFamily="@font/poppins"
+                android:text="@string/home_cta_subtitle"
+                android:textColor="@color/blanc"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextAppearance.Shop.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/section_engagements"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/cardEngagementQuality"
+                layout="@layout/item_engagement_card" />
+
+            <include
+                android:id="@+id/cardEngagementDelivery"
+                layout="@layout/item_engagement_card" />
+
+            <include
+                android:id="@+id/cardEngagementSupport"
+                layout="@layout/item_engagement_card" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContact"
+            style="@style/Widget.Shop.Button.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_md"
+            android:text="@string/footer_contact" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

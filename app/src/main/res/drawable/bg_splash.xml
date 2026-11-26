@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fond splash Luxury Beauty -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="160"
+        android:centerColor="#FFF5F7"
+        android:endColor="#FFFBF8"
+        android:startColor="#F8DCE7"
+        android:type="linear" />
+</shape>

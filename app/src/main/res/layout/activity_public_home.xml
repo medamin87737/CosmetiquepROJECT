@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivoire"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/headerPro"
+        layout="@layout/include_header_pro" />
+
+    <!-- Toolbar cachée pour le menu overflow -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/homeContent"
+        layout="@layout/fragment_client_home" />
+</LinearLayout>
