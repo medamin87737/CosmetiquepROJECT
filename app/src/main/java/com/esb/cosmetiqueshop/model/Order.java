@@ -7,7 +7,6 @@ public class Order {
     private long id;
     private long userId;
     private OrderStatus status;
-    private Long deliveryAgentId;
     private int subtotalMillimes;
     private int deliveryMillimes;
     private int totalMillimes;
@@ -45,14 +44,6 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
-    }
-
-    public Long getDeliveryAgentId() {
-        return deliveryAgentId;
-    }
-
-    public void setDeliveryAgentId(Long deliveryAgentId) {
-        this.deliveryAgentId = deliveryAgentId;
     }
 
     public int getSubtotalMillimes() {

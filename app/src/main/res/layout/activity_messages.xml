@@ -6,15 +6,29 @@
     android:background="@color/rose_bebe"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        style="@style/Widget.Shop.Toolbar"
+    <LinearLayout
+        android:id="@+id/headerToolbarRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_gradient_blue"
-        app:navigationIconTint="@color/blanc"
-        app:title="@string/messages_title"
-        app:titleTextColor="@color/blanc" />
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBarSpacer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.Shop.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@android:color/transparent"
+            android:minHeight="@dimen/toolbar_height"
+            app:navigationIconTint="@color/blanc"
+            app:title="@string/messages_title"
+            app:titleTextColor="@color/blanc" />
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

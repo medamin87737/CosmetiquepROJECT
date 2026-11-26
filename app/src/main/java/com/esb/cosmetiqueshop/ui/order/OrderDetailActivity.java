@@ -101,7 +101,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     }
 
     private void cancelOrder() {
-        orderRepository.updateStatus(orderId, OrderStatus.ANNULEE, null,
+        orderRepository.updateStatus(orderId, OrderStatus.ANNULEE,
                 new SessionManager(this).getUserId(), null,
                 new OrderRepository.OrderCallback() {
                     @Override

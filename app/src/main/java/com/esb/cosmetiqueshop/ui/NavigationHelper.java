@@ -26,10 +26,8 @@ public final class NavigationHelper {
         if (role == UserRole.ADMIN) {
             return new Intent(context, AdminMainActivity.class);
         }
-        if (role == UserRole.CLIENT) {
-            return new Intent(context, ClientMainActivity.class);
-        }
-        return new Intent(context, PublicHomeActivity.class);
+        // CLIENT (seul autre rôle)
+        return new Intent(context, ClientMainActivity.class);
     }
 
     public static void openAfterLogin(Context context, User user) {

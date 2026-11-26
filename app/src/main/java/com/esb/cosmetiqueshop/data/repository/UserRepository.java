@@ -183,7 +183,9 @@ public class UserRepository {
                 return;
             }
             com.esb.cosmetiqueshop.model.UserRole safeRole =
-                    role == null ? com.esb.cosmetiqueshop.model.UserRole.CLIENT : role;
+                    role == com.esb.cosmetiqueshop.model.UserRole.ADMIN
+                            ? com.esb.cosmetiqueshop.model.UserRole.ADMIN
+                            : com.esb.cosmetiqueshop.model.UserRole.CLIENT;
             long id = userDao.insertUser(email.trim(), password, fullName.trim(), phone.trim(),
                     safeRole, safeRole == com.esb.cosmetiqueshop.model.UserRole.ADMIN, active);
             User user = userDao.findById(id);
@@ -220,8 +222,11 @@ public class UserRepository {
                 executors.mainThread().execute(() -> callback.onFailure("Mot de passe trop faible."));
                 return;
             }
-            com.esb.cosmetiqueshop.model.UserRole safeRole =
-                    role == null ? existing.getRole() : role;
+            com.esb.cosmetiqueshop.model.UserRole safeRole = role == null
+                    ? existing.getRole()
+                    : (role == com.esb.cosmetiqueshop.model.UserRole.ADMIN
+                    ? com.esb.cosmetiqueshop.model.UserRole.ADMIN
+                    : com.esb.cosmetiqueshop.model.UserRole.CLIENT);
             boolean ok = userDao.updateUserAdmin(userId, email.trim(), fullName.trim(), phone.trim(),
                     safeRole, active);
             if (ok && newPasswordOrNull != null && !newPasswordOrNull.isEmpty()) {

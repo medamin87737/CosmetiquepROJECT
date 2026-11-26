@@ -115,18 +115,18 @@ public class OrderRepository {
         });
     }
 
-    public void updateStatus(long orderId, OrderStatus newStatus, Long deliveryAgentId,
+    public void updateStatus(long orderId, OrderStatus newStatus,
                              long changedByUserId, String note, OrderCallback callback) {
-        updateStatusInternal(orderId, newStatus, deliveryAgentId, changedByUserId, note, false, callback);
+        updateStatusInternal(orderId, newStatus, changedByUserId, note, false, callback);
     }
 
     /** Mise à jour admin : choix libre préparation / livrée / annulée / échec. */
     public void updateStatusAsAdmin(long orderId, OrderStatus newStatus,
                                     long changedByUserId, String note, OrderCallback callback) {
-        updateStatusInternal(orderId, newStatus, null, changedByUserId, note, true, callback);
+        updateStatusInternal(orderId, newStatus, changedByUserId, note, true, callback);
     }
 
-    private void updateStatusInternal(long orderId, OrderStatus newStatus, Long deliveryAgentId,
+    private void updateStatusInternal(long orderId, OrderStatus newStatus,
                                       long changedByUserId, String note, boolean adminMode,
                                       OrderCallback callback) {
         executors.diskIO().execute(() -> {
@@ -151,7 +151,7 @@ public class OrderRepository {
                 } else if (current == OrderStatus.ANNULEE && newStatus != OrderStatus.ANNULEE) {
                     consumeStockAgain(db, order);
                 }
-                orderDao.updateStatus(db, orderId, newStatus, deliveryAgentId);
+                orderDao.updateStatus(db, orderId, newStatus);
                 OrderStatusHistory h = new OrderStatusHistory();
                 h.setOrderId(orderId);
                 h.setOldStatus(current);

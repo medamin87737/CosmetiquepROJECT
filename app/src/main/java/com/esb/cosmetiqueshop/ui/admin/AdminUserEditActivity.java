@@ -40,7 +40,7 @@ public class AdminUserEditActivity extends AppCompatActivity {
         userRepository = new UserRepository(this);
         userId = getIntent().getLongExtra(EXTRA_USER_ID, -1);
 
-        binding.toolbar.setNavigationOnClickListener(v -> finish());
+        com.esb.cosmetiqueshop.utils.ToolbarBackHelper.enableFinish(binding.toolbar, this);
         roleLabels = new String[]{
                 getString(R.string.role_client),
                 getString(R.string.role_admin)

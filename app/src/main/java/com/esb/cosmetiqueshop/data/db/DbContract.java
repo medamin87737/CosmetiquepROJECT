@@ -73,20 +73,11 @@ public final class DbContract {
         public static final String COL_CREATED_AT = "created_at";
     }
 
-    public static final class DeliveryAgents {
-        public static final String TABLE = "delivery_agents";
-        public static final String COL_ID = "id";
-        public static final String COL_USER_ID = "user_id";
-        public static final String COL_VEHICLE_INFO = "vehicle_info";
-        public static final String COL_IS_AVAILABLE = "is_available";
-    }
-
     public static final class Orders {
         public static final String TABLE = "orders";
         public static final String COL_ID = "id";
         public static final String COL_USER_ID = "user_id";
         public static final String COL_STATUS = "status";
-        public static final String COL_DELIVERY_AGENT_ID = "delivery_agent_id";
         public static final String COL_SUBTOTAL_MILLIMES = "subtotal_millimes";
         public static final String COL_DELIVERY_MILLIMES = "delivery_millimes";
         public static final String COL_TOTAL_MILLIMES = "total_millimes";

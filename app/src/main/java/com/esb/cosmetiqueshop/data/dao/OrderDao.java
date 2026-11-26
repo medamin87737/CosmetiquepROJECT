@@ -87,9 +87,6 @@ public class OrderDao {
         ContentValues v = new ContentValues();
         v.put(DbContract.Orders.COL_USER_ID, order.getUserId());
         v.put(DbContract.Orders.COL_STATUS, order.getStatus().name());
-        if (order.getDeliveryAgentId() != null) {
-            v.put(DbContract.Orders.COL_DELIVERY_AGENT_ID, order.getDeliveryAgentId());
-        }
         v.put(DbContract.Orders.COL_SUBTOTAL_MILLIMES, order.getSubtotalMillimes());
         v.put(DbContract.Orders.COL_DELIVERY_MILLIMES, order.getDeliveryMillimes());
         v.put(DbContract.Orders.COL_TOTAL_MILLIMES, order.getTotalMillimes());
@@ -112,13 +109,10 @@ public class OrderDao {
         db.insert(DbContract.OrderItems.TABLE, null, v);
     }
 
-    public boolean updateStatus(SQLiteDatabase db, long orderId, OrderStatus status, Long agentId) {
+    public boolean updateStatus(SQLiteDatabase db, long orderId, OrderStatus status) {
         ContentValues v = new ContentValues();
         v.put(DbContract.Orders.COL_STATUS, status.name());
         v.put(DbContract.Orders.COL_UPDATED_AT, DateUtils.now());
-        if (agentId != null) {
-            v.put(DbContract.Orders.COL_DELIVERY_AGENT_ID, agentId);
-        }
         int rows = db.update(DbContract.Orders.TABLE, v,
                 DbContract.Orders.COL_ID + "=?", new String[]{String.valueOf(orderId)});
         return rows > 0;
@@ -235,10 +229,6 @@ public class OrderDao {
         o.setId(c.getLong(c.getColumnIndexOrThrow(DbContract.Orders.COL_ID)));
         o.setUserId(c.getLong(c.getColumnIndexOrThrow(DbContract.Orders.COL_USER_ID)));
         o.setStatus(OrderStatus.fromString(c.getString(c.getColumnIndexOrThrow(DbContract.Orders.COL_STATUS))));
-        int agentIdx = c.getColumnIndex(DbContract.Orders.COL_DELIVERY_AGENT_ID);
-        if (agentIdx >= 0 && !c.isNull(agentIdx)) {
-            o.setDeliveryAgentId(c.getLong(agentIdx));
-        }
         o.setSubtotalMillimes(c.getInt(c.getColumnIndexOrThrow(DbContract.Orders.COL_SUBTOTAL_MILLIMES)));
         o.setDeliveryMillimes(c.getInt(c.getColumnIndexOrThrow(DbContract.Orders.COL_DELIVERY_MILLIMES)));
         o.setTotalMillimes(c.getInt(c.getColumnIndexOrThrow(DbContract.Orders.COL_TOTAL_MILLIMES)));

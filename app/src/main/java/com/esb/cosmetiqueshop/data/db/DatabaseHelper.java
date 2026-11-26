@@ -17,7 +17,7 @@ import com.esb.cosmetiqueshop.utils.PasswordHasher;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "cosmetique_shop.db";
-    public static final int DB_VERSION = 8;
+    public static final int DB_VERSION = 9;
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -55,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DbContract.ProductImages.TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DbContract.Products.TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DbContract.Categories.TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + DbContract.DeliveryAgents.TABLE);
+        db.execSQL("DROP TABLE IF EXISTS delivery_agents"); // legacy v≤8
         db.execSQL("DROP TABLE IF EXISTS " + DbContract.AppSettings.TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DbContract.Users.TABLE);
     }
@@ -134,20 +134,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "UNIQUE(" + DbContract.Favorites.COL_USER_ID + "," + DbContract.Favorites.COL_PRODUCT_ID + ")"
                 + ")");
 
-        db.execSQL("CREATE TABLE " + DbContract.DeliveryAgents.TABLE + " ("
-                + DbContract.DeliveryAgents.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + DbContract.DeliveryAgents.COL_USER_ID + " INTEGER NOT NULL UNIQUE,"
-                + DbContract.DeliveryAgents.COL_VEHICLE_INFO + " TEXT,"
-                + DbContract.DeliveryAgents.COL_IS_AVAILABLE + " INTEGER NOT NULL DEFAULT 1,"
-                + "FOREIGN KEY(" + DbContract.DeliveryAgents.COL_USER_ID + ") REFERENCES "
-                + DbContract.Users.TABLE + "(" + DbContract.Users.COL_ID + ") ON DELETE CASCADE"
-                + ")");
-
         db.execSQL("CREATE TABLE " + DbContract.Orders.TABLE + " ("
                 + DbContract.Orders.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + DbContract.Orders.COL_USER_ID + " INTEGER NOT NULL,"
                 + DbContract.Orders.COL_STATUS + " TEXT NOT NULL,"
-                + DbContract.Orders.COL_DELIVERY_AGENT_ID + " INTEGER,"
                 + DbContract.Orders.COL_SUBTOTAL_MILLIMES + " INTEGER NOT NULL,"
                 + DbContract.Orders.COL_DELIVERY_MILLIMES + " INTEGER NOT NULL,"
                 + DbContract.Orders.COL_TOTAL_MILLIMES + " INTEGER NOT NULL,"
@@ -157,9 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + DbContract.Orders.COL_CREATED_AT + " INTEGER NOT NULL,"
                 + DbContract.Orders.COL_UPDATED_AT + " INTEGER NOT NULL,"
                 + "FOREIGN KEY(" + DbContract.Orders.COL_USER_ID + ") REFERENCES "
-                + DbContract.Users.TABLE + "(" + DbContract.Users.COL_ID + "),"
-                + "FOREIGN KEY(" + DbContract.Orders.COL_DELIVERY_AGENT_ID + ") REFERENCES "
-                + DbContract.DeliveryAgents.TABLE + "(" + DbContract.DeliveryAgents.COL_ID + ")"
+                + DbContract.Users.TABLE + "(" + DbContract.Users.COL_ID + ")"
                 + ")");
 
         db.execSQL("CREATE TABLE " + DbContract.OrderItems.TABLE + " ("
@@ -327,8 +315,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         setting3.put(DbContract.AppSettings.COL_VALUE, "12000");
         db.insert(DbContract.AppSettings.TABLE, null, setting3);
 
-        // Commande livrée (sans livreur)
-        long order1 = insertOrder(db, client1, OrderStatus.LIVREE, null, 127800, 7000, 134800,
+        // Commande livrée
+        long order1 = insertOrder(db, client1, OrderStatus.LIVREE, 127800, 7000, 134800,
                 "12 Rue de la Médina, Tunis", "22554488", "ESPECES", now - 86400000L * 5, now - 86400000L * 3);
         insertOrderItem(db, order1, productIds[0], "Crème Nuit Velours Rose", 1, 74900);
         insertOrderItem(db, order1, productIds[5], "Rouge à Lèvres Velours Rubis", 1, 42500);
@@ -339,18 +327,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertStatusHistory(db, order1, OrderStatus.EN_LIVRAISON, OrderStatus.LIVREE, adminId, null, now - 86400000L * 3);
 
         // En livraison
-        long order2 = insertOrder(db, client2, OrderStatus.EN_LIVRAISON, null, 129000, 7000, 136000,
+        long order2 = insertOrder(db, client2, OrderStatus.EN_LIVRAISON, 129000, 7000, 136000,
                 "45 Avenue Habib Bourguiba, Sfax", "99887766", "CARTE", now - 86400000L, now - 3600000);
         insertOrderItem(db, order2, productIds[16], "Eau de Parfum Jasmin", 1, 129000);
         insertStatusHistory(db, order2, null, OrderStatus.EN_ATTENTE, client2, null, now - 86400000L);
 
         // En attente
-        long order3 = insertOrder(db, client1, OrderStatus.EN_ATTENTE, null, 55900, 7000, 62900,
+        long order3 = insertOrder(db, client1, OrderStatus.EN_ATTENTE, 55900, 7000, 62900,
                 "12 Rue de la Médina, Tunis", "22554488", "ESPECES", now - 7200000, now - 7200000);
         insertOrderItem(db, order3, productIds[20], "Fluide SPF50 Invisible", 1, 49900);
 
         // Annulée
-        long order4 = insertOrder(db, client2, OrderStatus.ANNULEE, null, 38900, 7000, 45900,
+        long order4 = insertOrder(db, client2, OrderStatus.ANNULEE, 38900, 7000, 45900,
                 "45 Avenue Habib Bourguiba, Sfax", "99887766", "ESPECES", now - 86400000L * 2, now - 86400000L * 2);
         insertOrderItem(db, order4, productIds[6], "Mascara Volume Intense", 1, 34900);
         insertStatusHistory(db, order4, OrderStatus.EN_ATTENTE, OrderStatus.ANNULEE, adminId, "Client a changé d'avis", now - 86400000L * 2);
@@ -402,14 +390,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(DbContract.Users.TABLE, null, v);
     }
 
-    private long insertDeliveryAgent(SQLiteDatabase db, long userId, String vehicle, int available) {
-        ContentValues v = new ContentValues();
-        v.put(DbContract.DeliveryAgents.COL_USER_ID, userId);
-        v.put(DbContract.DeliveryAgents.COL_VEHICLE_INFO, vehicle);
-        v.put(DbContract.DeliveryAgents.COL_IS_AVAILABLE, available);
-        return db.insert(DbContract.DeliveryAgents.TABLE, null, v);
-    }
-
     private long insertCategory(SQLiteDatabase db, String name, String desc, int sort, String imageUrl) {
         ContentValues v = new ContentValues();
         v.put(DbContract.Categories.COL_NAME, name);
@@ -438,15 +418,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(DbContract.Products.TABLE, null, v);
     }
 
-    private long insertOrder(SQLiteDatabase db, long userId, OrderStatus status, Long agentId,
+    private long insertOrder(SQLiteDatabase db, long userId, OrderStatus status,
                              int subtotal, int delivery, int total, String address, String phone,
                              String payment, long createdAt, long updatedAt) {
         ContentValues v = new ContentValues();
         v.put(DbContract.Orders.COL_USER_ID, userId);
         v.put(DbContract.Orders.COL_STATUS, status.name());
-        if (agentId != null) {
-            v.put(DbContract.Orders.COL_DELIVERY_AGENT_ID, agentId);
-        }
         v.put(DbContract.Orders.COL_SUBTOTAL_MILLIMES, subtotal);
         v.put(DbContract.Orders.COL_DELIVERY_MILLIMES, delivery);
         v.put(DbContract.Orders.COL_TOTAL_MILLIMES, total);

@@ -38,7 +38,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
         super.onCreate(savedInstanceState);
         binding = ActivityAdminMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        StatusBarHelper.applyHeader(this, binding.adminToolbar);
+        StatusBarHelper.applyHeader(this, binding.headerAdminRoot);
 
         setSupportActionBar(binding.adminToolbar);
         if (getSupportActionBar() != null) {

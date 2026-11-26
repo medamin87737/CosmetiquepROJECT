@@ -16,48 +16,63 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/adminToolbar"
-                style="@style/Widget.Shop.Toolbar"
+            <!-- Header : fond sous status bar, contenu sous heure / batterie -->
+            <LinearLayout
+                android:id="@+id/headerAdminRoot"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/toolbar_height"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_gradient_blue"
-                android:minHeight="@dimen/toolbar_height"
-                app:contentInsetStartWithNavigation="0dp"
-                app:navigationIcon="?attr/homeAsUpIndicator"
-                app:navigationIconTint="@color/blanc"
-                app:title="">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <View
+                    android:id="@+id/statusBarSpacer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingEnd="@dimen/spacing_md">
+                    android:layout_height="0dp"
+                    android:background="@android:color/transparent" />
 
-                    <ImageView
-                        android:id="@+id/imgToolbarLogo"
-                        android:layout_width="@dimen/header_logo_size"
-                        android:layout_height="@dimen/header_logo_size"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/logo_rose_mark" />
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/adminToolbar"
+                    style="@style/Widget.Shop.Toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/toolbar_height"
+                    android:background="@android:color/transparent"
+                    android:minHeight="@dimen/toolbar_height"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:navigationIcon="?attr/homeAsUpIndicator"
+                    app:navigationIconTint="@color/blanc"
+                    app:title="">
 
-                    <TextView
-                        android:id="@+id/txtToolbarTitle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/spacing_sm"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:fontFamily="@font/poppins"
-                        android:maxLines="1"
-                        android:text="@string/admin_dashboard"
-                        android:textColor="@color/blanc"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </com.google.android.material.appbar.MaterialToolbar>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingEnd="@dimen/spacing_md">
+
+                        <ImageView
+                            android:id="@+id/imgToolbarLogo"
+                            android:layout_width="@dimen/header_logo_size"
+                            android:layout_height="@dimen/header_logo_size"
+                            android:contentDescription="@string/app_name"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/logo_rose_mark" />
+
+                        <TextView
+                            android:id="@+id/txtToolbarTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_sm"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/poppins"
+                            android:maxLines="1"
+                            android:text="@string/admin_dashboard"
+                            android:textColor="@color/blanc"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.appbar.MaterialToolbar>
+            </LinearLayout>
 
             <FrameLayout
                 android:id="@+id/adminFragmentContainer"

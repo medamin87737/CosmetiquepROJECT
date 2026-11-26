@@ -24,7 +24,7 @@ import com.esb.cosmetiqueshop.R;
 public final class StatusBarHelper {
 
     /** Marge sous heure / wifi / batterie pour éviter tout chevauchement */
-    private static final int EXTRA_DP = 10;
+    private static final int EXTRA_DP = 14;
 
     private StatusBarHelper() {
     }

@@ -204,7 +204,6 @@
     <string name="admin_user_created">Utilisateur créé</string>
     <string name="admin_user_updated">Utilisateur mis à jour</string>
     <string name="role_client">Client</string>
-    <string name="role_delivery">Livreur</string>
     <string name="role_admin">Admin</string>
     <string name="admin_logout">Déconnexion</string>
     <string name="stat_revenue">Chiffre d\'affaires</string>
@@ -262,7 +261,6 @@
     <string name="review_not_allowed">Avis après livraison uniquement</string>
     <string name="export_saved">Fichier prêt à enregistrer</string>
     <string name="mark_treated">Marquer traité</string>
-    <string name="assign_delivery">Assigner livreur</string>
     <string name="period_filter">Période</string>
     <string name="drawer_open">Ouvrir le menu</string>
     <string name="drawer_close">Fermer le menu</string>
@@ -295,7 +293,6 @@
     <string name="product_image_local_hint">Image locale / galerie (recommandé)</string>
     <string name="admin_order_manage">Gestion commande</string>
     <string name="select_status">Statut de la commande</string>
-    <string name="select_agent">Choisir un livreur</string>
     <string name="rating_hint">Note (1-5)</string>
     <string name="comment_hint">Commentaire</string>
     <string name="btn_submit_review">Publier l\'avis</string>

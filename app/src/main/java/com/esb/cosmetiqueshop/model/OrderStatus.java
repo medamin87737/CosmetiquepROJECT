@@ -57,11 +57,6 @@ public enum OrderStatus {
         return new OrderStatus[]{EN_PREPARATION, LIVREE, ANNULEE, ECHEC_LIVRAISON};
     }
 
-    /** Plus d’assignation livreur dans l’app. */
-    public static boolean requiresDeliveryAgent(OrderStatus target) {
-        return false;
-    }
-
     /** Statuts autorisés depuis l'état actuel. */
     public Set<OrderStatus> allowedNextStatuses() {
         Set<OrderStatus> allowed = TRANSITIONS.get(this);
