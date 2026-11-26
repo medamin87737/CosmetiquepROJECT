@@ -21,6 +21,8 @@
     <string name="confirm_password_hint">Confirmer le mot de passe</string>
     <string name="btn_save_password">Enregistrer</string>
     <string name="error_password_mismatch">Les mots de passe ne correspondent pas.</string>
+    <string name="password_rules_hint">Au moins 8 caractères, avec majuscule, minuscule et chiffre.</string>
+    <string name="password_saved">Mot de passe mis à jour.</string>
     <string name="error_invalid_login">Email ou mot de passe incorrect.</string>
     <string name="dialog_error_title">Connexion</string>
     <string name="dialog_success_title">Succès</string>

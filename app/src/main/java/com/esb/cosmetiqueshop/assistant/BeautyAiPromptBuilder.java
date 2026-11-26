@@ -21,7 +21,8 @@ public final class BeautyAiPromptBuilder {
                 + "2) Cite le nom exact du produit et son prix.\n"
                 + "3) Si rien ne convient, dis-le clairement sans inventer de produit.\n"
                 + "4) Réponds en français, courte, claire et chaleureuse (5–8 phrases max).\n"
-                + "5) Ne mentionne pas d’autres marques hors catalogue.";
+                + "5) Ne mentionne pas d’autres marques hors catalogue.\n"
+                + "6) Ne cite jamais d’identifiant technique (ID, numéro interne).";
     }
 
     public static String catalogBlock(List<Product> products) {
@@ -37,8 +38,7 @@ public final class BeautyAiPromptBuilder {
                 continue;
             }
             n++;
-            sb.append("- ID ").append(p.getId())
-                    .append(" | ").append(safe(p.getName()))
+            sb.append("- ").append(safe(p.getName()))
                     .append(" | marque: ").append(safe(p.getBrand()))
                     .append(" | catégorie: ").append(safe(p.getCategoryName()))
                     .append(" | peau: ").append(safe(p.getSkinType()))

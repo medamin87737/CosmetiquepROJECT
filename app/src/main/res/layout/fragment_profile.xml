@@ -65,12 +65,43 @@
             android:layout_marginTop="@dimen/spacing_md"
             android:text="@string/btn_edit_profile" />
 
-        <!-- Assistante beauté IA -->
+        <!-- Favoris -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.Shop.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_lg"
+            app:cardBackgroundColor="@color/blanc"
+            app:strokeColor="@color/gris_bordure"
+            app:strokeWidth="1dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFavorites"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|center_vertical"
+                android:minHeight="56dp"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:text="@string/favorites_title"
+                android:textAllCaps="false"
+                android:textColor="@color/bordeaux_fonce"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_favorite"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/spacing_md"
+                app:iconSize="24dp"
+                app:iconTint="@color/bordeaux" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Assistante beauté IA -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Shop.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
             app:cardBackgroundColor="@color/blanc"
             app:strokeColor="@color/gris_bordure"
             app:strokeWidth="1dp">

@@ -16,6 +16,7 @@ import com.esb.cosmetiqueshop.databinding.FragmentProfileBinding;
 import com.esb.cosmetiqueshop.ui.NavigationHelper;
 import com.esb.cosmetiqueshop.ui.assistant.BeautyAssistantActivity;
 import com.esb.cosmetiqueshop.ui.auth.ChangePasswordActivity;
+import com.esb.cosmetiqueshop.ui.favorites.FavoritesActivity;
 import com.esb.cosmetiqueshop.ui.messages.MessagesActivity;
 
 public class ProfileFragment extends Fragment {
@@ -54,6 +55,8 @@ public class ProfileFragment extends Fragment {
                     }
                 }));
 
+        binding.btnFavorites.setOnClickListener(v ->
+                startActivity(new Intent(requireContext(), FavoritesActivity.class)));
         binding.btnBeautyAssistant.setOnClickListener(v ->
                 startActivity(new Intent(requireContext(), BeautyAssistantActivity.class)));
         binding.btnMessages.setOnClickListener(v ->
